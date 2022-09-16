@@ -1,9 +1,12 @@
-from random import randint
+import colorama
+from random import randint, choice
+# from tkinter import *
+
 
 PLAY_OPTIONS = ['rock', 'paper', 'scissors']
 
 
-def play(player_move: str, computer_move: str) -> None:
+def one_round(player_move: str, computer_move: str) -> None:
     if player_move == computer_move:
         print(f'Tie!, {computer_move=}, {player_move=}')
     elif computer_move == 'rock':
@@ -29,12 +32,16 @@ def validate(move: str) -> bool:
     return True
 
 ## TODO: Input control | rock -> r, 1
-## TODO: play again
 ## TODO: OOP design
-## TODO: TKINTER
+## TODO: GUI with TKINTER or pyqt5
+# brew install python-tk
+
+def clear_screen() -> None:
+    print(colorama.ansi.clear_screen(), end='')
 
 def main():
-    computer_move = PLAY_OPTIONS[randint(0,2)]
+    # computer_move = PLAY_OPTIONS[randint(0,2)]
+    computer_move = choice(PLAY_OPTIONS)
 
     player = False
 
@@ -43,8 +50,16 @@ def main():
         while not validate(player_move):
             player_move = (input('Rock, Paper, Scissors?\n')).lower()
         player = True
-        play(player_move, computer_move)
+        one_round(player_move, computer_move)
+    
+        play_again = input('Play again? (y/n): ')
+        player = 'n'.__eq__(play_again.lower())
 
 if __name__ == "__main__":
-    main()
+    try:
+        colorama.init()
+        clear_screen()
+        main()
+    finally:
+        colorama.deinit()
 
