@@ -28,6 +28,10 @@ def validate(move: str) -> bool:
         return False
     return True
 
+## TODO: Input control | rock -> r, 1
+## TODO: play again
+## TODO: OOP design
+## TODO: TKINTER
 
 def main():
     computer_move = PLAY_OPTIONS[randint(0,2)]

@@ -4,6 +4,8 @@
 
 09/13/2022 - 12/22/2022 ⏳
 
+It's a 100 day project, with 14 weeks project.
+
 ## Week 1
 
 09/15 - 09/18
