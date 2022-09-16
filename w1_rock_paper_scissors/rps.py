@@ -5,7 +5,7 @@ PLAY_OPTIONS = ['rock', 'paper', 'scissors']
 
 def play(player_move: str, computer_move: str) -> None:
     if player_move == computer_move:
-        print('Tie!, {computer_move=}, {player_move=}')
+        print(f'Tie!, {computer_move=}, {player_move=}')
     elif computer_move == 'rock':
         if player_move == 'scissors':
             print(f'Player lose! {computer_move=}, {player_move=}')
@@ -28,18 +28,19 @@ def validate(move: str) -> bool:
         return False
     return True
 
-computer_move = PLAY_OPTIONS[randint(0,2)]
 
-player = False
+def main():
+    computer_move = PLAY_OPTIONS[randint(0,2)]
 
-while player == False:
-    player_move = (input('Rock, Paper, Scissors?\n')).lower()
-    while not validate(player_move):
+    player = False
+
+    while player == False:
         player_move = (input('Rock, Paper, Scissors?\n')).lower()
-    player = True
-    play(player_move, computer_move)
+        while not validate(player_move):
+            player_move = (input('Rock, Paper, Scissors?\n')).lower()
+        player = True
+        play(player_move, computer_move)
 
+if __name__ == "__main__":
+    main()
 
-
-# print(f'{computer_move=}')
-# print(f'{player_move=}')
