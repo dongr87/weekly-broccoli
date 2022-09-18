@@ -1,38 +1,48 @@
+from distutils.log import error
+from multiprocessing.sharedctypes import Value
 import colorama
-from random import randint, choice
-# from tkinter import *
+from random import randint
+from enum import IntEnum
+import logging
 
+class Action(IntEnum):
+    Rock = 0
+    Paper = 1
+    Scissors = 2
 
-PLAY_OPTIONS = ['rock', 'paper', 'scissors']
-
-
-def one_round(player_move: str, computer_move: str) -> None:
+def one_round(player_move: Action, computer_move: Action) -> None:
     if player_move == computer_move:
-        print(f'Tie!, {computer_move=}, {player_move=}')
-    elif computer_move == 'rock':
-        if player_move == 'scissors':
-            print(f'Player lose! {computer_move=}, {player_move=}')
+        print(f'Tie! Computer: {computer_move.name}, Player: {player_move.name}')
+    elif computer_move == Action.Rock:
+        if player_move == Action.Scissors:
+            print(f'Player lose! Computer: {computer_move.name}, Player: {player_move.name}')
         else:
-            print(f'Player win! {computer_move=}, {player_move=}')
-    elif computer_move == 'scissors':
-        if player_move == 'paper':
-            print(f'Player lose! {computer_move=}, {player_move=}')
+            print(f'Player win! Computer: {computer_move.name}, Player: {player_move.name}')
+    elif computer_move == Action.Scissors:
+        if player_move == Action.Paper:
+            print(f'Player lose! Computer: {computer_move.name}, Player: {player_move.name}')
         else:
-            print(f'Player win! {computer_move=}, {player_move=}')
-    elif computer_move == 'paper':
-        if player_move == 'rock':
-            print(f'Player lose! {computer_move=}, {player_move=}')
+            print(f'Player win! Computer: {computer_move.name}, Player: {player_move.name}')
+    elif computer_move == Action.Paper:
+        if player_move == Action.Rock:
+            print(f'Player lose! Computer: {computer_move.name}, Player: {player_move.name}')
         else:
-            print(f'Player win! {computer_move=}, {player_move=}')
+            print(f'Player win! Computer: {computer_move.name}, Player: {player_move.name}')
 
-def validate(move: str) -> bool:
-    if move not in PLAY_OPTIONS:
-        print(f'Player input {move} is not valid, please enter again!')
-        return False
-    return True
+def get_player_move() -> Action:
+    user_input = input('Enter a choice (Rock[0], Paper[1], Scissors[2]): \n')
+    try:
+        move = int(user_input)
+    except:
+        logging.error(f'Value error')
+        print(f'Player input {user_input} is not valid, please enter again!')
 
-## TODO: Input control | rock -> r, 1
-## TODO: OOP design
+    return Action(move)
+
+def get_computer_move() -> Action:
+    choice = randint(0, len(Action) - 1)
+    return Action(choice)
+
 ## TODO: GUI with TKINTER or pyqt5
 # brew install python-tk
 
@@ -40,20 +50,16 @@ def clear_screen() -> None:
     print(colorama.ansi.clear_screen(), end='')
 
 def main():
-    # computer_move = PLAY_OPTIONS[randint(0,2)]
-    computer_move = choice(PLAY_OPTIONS)
+    again = True
 
-    player = False
-
-    while player == False:
-        player_move = (input('Rock, Paper, Scissors?\n')).lower()
-        while not validate(player_move):
-            player_move = (input('Rock, Paper, Scissors?\n')).lower()
-        player = True
+    while again:
+        player_move = get_player_move()
+        computer_move = get_computer_move()
+        again = False
         one_round(player_move, computer_move)
     
         play_again = input('Play again? (y/n): ')
-        player = 'n'.__eq__(play_again.lower())
+        again = 'Y'.__eq__(play_again.upper())
 
 if __name__ == "__main__":
     try:
@@ -62,4 +68,3 @@ if __name__ == "__main__":
         main()
     finally:
         colorama.deinit()
-
