@@ -23,6 +23,11 @@ https://realpython.com/python-rock-paper-scissors/
 Tkinter GUI
 OOP
 
+#### Resources
+
+Talking about Main method, \_\_name\_\_, and modules
+https://realpython.com/python-main-function/
+
 ## Week 2
 
 09/19 - 09/25
