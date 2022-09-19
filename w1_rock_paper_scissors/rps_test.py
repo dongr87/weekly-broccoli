@@ -1,3 +1,4 @@
+from tkinter import N
 import pytest
 import mock
 import builtins
@@ -15,10 +16,27 @@ def test_get_player_move():
     with mock.patch.object(builtins, 'input', lambda _: '2'):
         assert get_player_move() == Action.Scissors
 
-def test_one_round(capsys):
-    computer = Action.Rock
-    player = Action.Paper
+
+actions_win = [(Action.Rock, Action.Paper), (Action.Paper, Action.Scissors)]
+
+@pytest.mark.parametrize("computer, player", actions_win)
+def test_one_round_win(capsys, computer, player):
     one_round(player, computer)
-    # assert (one_round(player, computer) == 'Player lose! Computer: Rock, Player: Paper')
     captured = capsys.readouterr()
-    assert (captured.out == 'Player win! Computer: Rock, Player: Paper\n')
+    assert (captured.out == f'Player win! Computer: {computer.name}, Player: {player.name}\n')
+
+actions_lose = [(Action.Rock, Action.Scissors), (Action.Paper, Action.Rock)]
+
+@pytest.mark.parametrize("computer, player", actions_lose)
+def test_one_round_lose(capsys, computer, player):
+    one_round(player, computer)
+    captured = capsys.readouterr()
+    assert (captured.out == f'Player lose! Computer: {computer.name}, Player: {player.name}\n')
+
+actions_tie = [(Action.Rock, Action.Rock), (Action.Paper, Action.Paper)]
+
+@pytest.mark.parametrize("computer, player", actions_tie)
+def test_one_round_win(capsys, computer, player):
+    one_round(player, computer)
+    captured = capsys.readouterr()
+    assert (captured.out == f'Tie! Computer: {computer.name}, Player: {player.name}\n')
