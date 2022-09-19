@@ -11,23 +11,20 @@ class Action(IntEnum):
     Scissors = 2
 
 def one_round(player_move: Action, computer_move: Action) -> None:
+    victories = {
+        Action.Rock: [Action.Scissors],  # Rock beats scissors
+        Action.Paper: [Action.Rock],  # Paper beats rock
+        Action.Scissors: [Action.Paper]  # Scissors beats paper
+    }
+    defeats = victories[player_move]
+
     if player_move == computer_move:
         print(f'Tie! Computer: {computer_move.name}, Player: {player_move.name}')
-    elif computer_move == Action.Rock:
-        if player_move == Action.Scissors:
-            print(f'Player lose! Computer: {computer_move.name}, Player: {player_move.name}')
-        else:
-            print(f'Player win! Computer: {computer_move.name}, Player: {player_move.name}')
-    elif computer_move == Action.Scissors:
-        if player_move == Action.Paper:
-            print(f'Player lose! Computer: {computer_move.name}, Player: {player_move.name}')
-        else:
-            print(f'Player win! Computer: {computer_move.name}, Player: {player_move.name}')
-    elif computer_move == Action.Paper:
-        if player_move == Action.Rock:
-            print(f'Player lose! Computer: {computer_move.name}, Player: {player_move.name}')
-        else:
-            print(f'Player win! Computer: {computer_move.name}, Player: {player_move.name}')
+    elif computer_move in defeats:
+        print(f'Player win! Computer: {computer_move.name}, Player: {player_move.name}')
+    else:
+        print(f'Player lose! Computer: {computer_move.name}, Player: {player_move.name}')
+
 
 def get_player_move() -> Action:
     user_input = input('Enter a choice (Rock[0], Paper[1], Scissors[2]): \n')
@@ -52,14 +49,20 @@ def clear_screen() -> None:
 def main():
     again = True
 
-    while again:
-        player_move = get_player_move()
+    while True:
+        try:
+            player_move = get_player_move()
+        except ValueError as e:
+            range_str = f"[0, {len(Action) - 1}]"
+            print(f"Invalid selection. Enter a value in range {range_str}")
+            continue
+
         computer_move = get_computer_move()
-        again = False
         one_round(player_move, computer_move)
     
         play_again = input('Play again? (y/n): ')
-        again = 'Y'.__eq__(play_again.upper())
+        if play_again.lower() != 'y':
+            break
 
 if __name__ == "__main__":
     try:
