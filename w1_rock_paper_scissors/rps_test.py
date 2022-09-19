@@ -21,4 +21,4 @@ def test_one_round(capsys):
     one_round(player, computer)
     # assert (one_round(player, computer) == 'Player lose! Computer: Rock, Player: Paper')
     captured = capsys.readouterr()
-    assert (captured.out == 'Player win! Computer: Rock, Player: Paper')
+    assert (captured.out == 'Player win! Computer: Rock, Player: Paper\n')
