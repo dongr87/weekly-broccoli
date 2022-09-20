@@ -32,3 +32,26 @@ https://realpython.com/python-main-function/
 
 09/19 - 09/25
 Real Estate Price Crawler
+
+Redfin Data Center
+https://www.redfin.com/news/data-center/
+
+Scrape redfin legally with API
+https://www.youtube.com/watch?v=8E5DPE55330
+
+Udacity Machine Learning
+https://zhuanlan.zhihu.com/p/48702850
+
+## Week 3
+
+## Backup Ideas
+
+#### React.js 记账 app
+
+https://xiedaimala.com/courses/fdc2f37f-ed36-4017-bf81-5acbb54ce745/random/76d0fce3ac?#/common
+
+#### 60 Python Projects with Source Code
+
+https://medium.com/coders-camp/60-python-projects-with-source-code-919cd8a6e512
+
+#### 抢鞋脚本
