@@ -55,3 +55,6 @@ https://xiedaimala.com/courses/fdc2f37f-ed36-4017-bf81-5acbb54ce745/random/76d0f
 https://medium.com/coders-camp/60-python-projects-with-source-code-919cd8a6e512
 
 #### 抢鞋脚本
+
+#### Minecraft with React, Three.js
+https://www.youtube.com/watch?v=qpOZup_3P_A
