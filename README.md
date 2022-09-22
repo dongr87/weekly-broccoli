@@ -44,6 +44,9 @@ https://zhuanlan.zhihu.com/p/48702850
 
 ## Week 3
 
+#### React To-do list
+#### React Page Clone
+
 ## Backup Ideas
 
 #### React.js 记账 app
