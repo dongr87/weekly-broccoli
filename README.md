@@ -61,6 +61,10 @@ https://medium.com/coders-camp/60-python-projects-with-source-code-919cd8a6e512
 
 #### 抢鞋脚本
 
+#### Minecraft with React, Three.js
+
+https://www.youtube.com/watch?v=qpOZup_3P_A
+
 #### Password management
 
 #### 微信小程序
