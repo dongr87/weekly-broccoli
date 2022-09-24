@@ -49,6 +49,9 @@ https://realpython.com/python-json/
 
 ## Week 3
 
+#### React To-do list
+#### React Page Clone
+
 ## Backup Ideas
 
 #### React.js 记账 app
