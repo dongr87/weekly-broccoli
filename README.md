@@ -73,3 +73,11 @@ https://www.youtube.com/watch?v=qpOZup_3P_A
 #### 微信小程序
 
 #### Rust on BlockChain/Web3
+
+## Python package learning
+- Data Class
+- Pytest
+- os
+- pathlib
+- sys
+- json
