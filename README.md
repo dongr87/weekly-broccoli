@@ -81,3 +81,6 @@ https://www.youtube.com/watch?v=qpOZup_3P_A
 - pathlib
 - sys
 - json
+
+https://automatetheboringstuff.com/2e/
+
