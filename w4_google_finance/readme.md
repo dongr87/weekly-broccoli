@@ -1,0 +1,1 @@
+Create an app integrating Google Sheets with Python for personal finance
